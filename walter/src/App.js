@@ -1,26 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
+import Rectangle from './Rectangle'
 
-function App() {
-  return (
+class App extends Component {
+  state = {
+    Timer: 40,
+    timerDisplay: 40,
+    currentTime: new Date().getSeconds(),
+    interval: null
+  }
+  componentDidMount() {
+   var interval= setInterval(() => this.timeLaucher(this.state.Timer), 1000).bind
+   this.setState({interval : interval})
+  }
+  componentWillUnmount() {
+      clearInterval(this.timeLaucher)
+  }
+
+  changeShape(Timer) {
+    if ( Timer > 20 )
+      return 'blue'
+    if ( Timer > 12 && Timer <= 20 )
+      return 'orange'
+    if ( Timer >= 0 && Timer <= 12 )
+      return 'red'
+    return 'hidden'
+  }
+
+  timeLaucher = time => {
+    const {Timer, currentTime} = this.state
+    var tmp = new Date().getSeconds()
+    if (Timer === 0){
+      this.setState({Timer: 0, currentTime: NaN , timerDisplay: '0'})
+      clearInterval(this.state.timeLaucher)
+      this.setState({interval: null})
+      return
+    }
+    if (currentTime !== tmp){
+      var str = Timer.toString()
+      if (str.length === 1){
+        var addZero = "0"
+        str = addZero.concat('', str)
+      }
+      this.setState({Timer: Timer - 1, currentTime: tmp, timerDisplay: str})
+    }
+    return tmp
+  }
+
+  render() {
+    const {Timer, timerDisplay} = this.state
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Rectangle 
+        compter={timerDisplay}
+        feedback={this.changeShape(Timer + 1)} 
+      />
     </div>
   );
+}
 }
 
 export default App;

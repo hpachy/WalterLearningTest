@@ -1,0 +1,35 @@
+.App > .rectangle {
+    display:inline-block;
+    width: 60px;
+    font-size: 2em;
+    flex: 1 1 calc(100% / 6 - 0.4em);
+    outline: 0.08em solid silver;
+    margin: 0.2em;
+    display: flex;
+    cursor: default;
+  }
+  
+  .App > .rectangle.hidden {
+    background: silver;
+  }
+
+  .App > .rectangle.red {
+    outline-color: red;
+    background: red;
+  }
+  .App > .rectangle.orange {
+    outline-color: orange;
+    background: orange;
+  }
+  .App > .rectangle.blue {
+    outline-color: blue;
+    background: blue;
+  }
+  
+  .App > .rectangle.visible {
+    cursor: not-allowed;
+  }
+  
+  .App > .Rectangle > .compter {
+    margin: auto;
+  }
