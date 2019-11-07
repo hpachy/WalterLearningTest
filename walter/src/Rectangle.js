@@ -4,8 +4,8 @@ import React from 'react'
 import './Rectangle.css'
 
 
-const Rectangle = ({compter, currentTime, feedback, onClick}) => (
-    <div className={`rectangle ${feedback}`} onClick={() => onClick(compter)}>
+const Rectangle = ({compter, currentTime, feedback, onClick, index}) => (
+    <div className={`rectangle ${feedback}`} onClick={() => onClick(index)} key={index}>
         <span className="compter">{compter}</span>
     </div>
 )

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './App.css';
 import Rectangle from './Rectangle'
 
+const allTimer = [45, 50]
+
 class App extends Component {
   state = {
     Timer: 40,
@@ -27,7 +29,7 @@ class App extends Component {
     return 'hidden'
   }
 
-  timeLaucher = time => {
+  timeLaucher = index => {
     const {Timer, currentTime} = this.state
     var tmp = new Date().getSeconds()
     if (Timer === 0){
@@ -47,14 +49,31 @@ class App extends Component {
     return tmp
   }
 
+  activateOnclick = index => {
+    console.log('here', index)
+    this.timeLaucher(index)
+  }
+
   render() {
     const {Timer, timerDisplay} = this.state
     return (
     <div className="App">
       <Rectangle 
         compter={timerDisplay}
-        feedback={this.changeShape(Timer + 1)} 
+        feedback={this.changeShape(Timer + 1)}
+        // index={index}        
       />
+      {
+        allTimer.map((crate, index) => 
+          <Rectangle 
+            compter={crate}
+            feedback={this.changeShape(crate + 1)}
+            onClick={this.activateOnclick}
+            index={index}
+            key={index}
+          />
+        ) 
+      }
     </div>
   );
 }
