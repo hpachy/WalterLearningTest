@@ -10,7 +10,7 @@ class App extends Component {
     interval: null
   }
   componentDidMount() {
-   var interval= setInterval(() => this.timeLaucher(this.state.Timer), 1000).bind
+   var interval = setInterval(() => this.timeLaucher(this.state.Timer), 1000)
    this.setState({interval : interval})
   }
   componentWillUnmount() {
@@ -30,7 +30,6 @@ class App extends Component {
   timeLaucher = time => {
     const {Timer, currentTime} = this.state
     var tmp = new Date().getSeconds()
-    console.log('loop')
     if (Timer === 0){
       this.setState({Timer: 0, currentTime: NaN , timerDisplay: '0'})
       clearInterval(this.state.interval)
