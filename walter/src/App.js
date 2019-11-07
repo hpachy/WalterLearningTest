@@ -11,6 +11,8 @@ class App extends Component {
     currentTime: new Date().getSeconds(),
     interval: null
   }
+
+  //j'ai l'impression que mon setInterval ne s'arrete pas
   componentDidMount() {
    var interval= setInterval(() => this.timeLaucher(this.state.Timer), 1000).bind
    this.setState({interval : interval})
@@ -29,6 +31,7 @@ class App extends Component {
     return 'hidden'
   }
 
+  //il faudrait que cette fonction soit plus generique et moins baser sur les states
   timeLaucher = index => {
     const {Timer, currentTime} = this.state
     var tmp = new Date().getSeconds()
@@ -61,7 +64,6 @@ class App extends Component {
       <Rectangle 
         compter={timerDisplay}
         feedback={this.changeShape(Timer + 1)}
-        // index={index}        
       />
       {
         allTimer.map((crate, index) => 
