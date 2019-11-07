@@ -14,7 +14,7 @@ class App extends Component {
    this.setState({interval : interval})
   }
   componentWillUnmount() {
-      clearInterval(this.timeLaucher)
+      clearInterval(this.state.interval)
   }
 
   changeShape(Timer) {
@@ -30,9 +30,10 @@ class App extends Component {
   timeLaucher = time => {
     const {Timer, currentTime} = this.state
     var tmp = new Date().getSeconds()
+    console.log('loop')
     if (Timer === 0){
       this.setState({Timer: 0, currentTime: NaN , timerDisplay: '0'})
-      clearInterval(this.state.timeLaucher)
+      clearInterval(this.state.interval)
       this.setState({interval: null})
       return
     }
