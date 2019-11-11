@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> contain Rectangle is blue 1`] = `
+<div
+  className="rectangle blue"
+>
+  <span
+    className="compter"
+  >
+    40
+  </span>
+</div>
+`;
+
+exports[`<App /> contain Rectangle is orange 1`] = `
+<div
+  className="rectangle orange"
+>
+  <span
+    className="compter"
+  >
+    20
+  </span>
+</div>
+`;
+
+exports[`<App /> contain Rectangle is red 1`] = `
+<div
+  className="rectangle red"
+>
+  <span
+    className="compter"
+  >
+    12
+  </span>
+</div>
+`;
+
+exports[`<App /> under 10 we still have 2 numbers 1`] = `
+<div
+  className="rectangle red"
+>
+  <span
+    className="compter"
+  >
+    08
+  </span>
+</div>
+`;
